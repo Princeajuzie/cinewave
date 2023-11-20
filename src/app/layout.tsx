@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { CollapseProvider } from '@/context/CollapseContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <CollapseProvider>
+      
       <body className={inter.className}>{children}</body>
+      </CollapseProvider>
     </html>
   )
 }
