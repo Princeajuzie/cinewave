@@ -150,7 +150,7 @@ key={index}
    <div className="w-[100%] mt-[40px]">
    
       <div className="flex items-center mt-6 gap-2 font-[700] hover:text-gray-200  cursor-pointer  text-[20px] "  >
-        <h1 className="">Trending TV series </h1> 
+        <h1 className="">Trending TV series</h1> 
         <FiTrendingUp />
       </div>
 
