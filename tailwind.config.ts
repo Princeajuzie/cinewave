@@ -15,6 +15,11 @@ const config: Config = withMT({
       },
     },
   },
+rippleui :{
+  removeThemes :[
+  "white", "whateverTheme"
+  ]
+},
   plugins: [
   require("rippleui")
   ],
