@@ -23,7 +23,7 @@ export default function HeroCarousel() {
         <Carousel
           autoplay={true}
           loop={true}
-          className="rounded-xl h-[87vh]"
+          className="rounded-xl lg:h-[87vh]"
           navigation={({ setActiveIndex, activeIndex, length }) => (
             <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
               {new Array(length).fill("").map((_, i) => (

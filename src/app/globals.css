@@ -37,10 +37,10 @@ display: none;
 
 
 
-.swiper {
+/* .swiper {
   width: fit-content;
   height: auto;
-}
+} */
 
 .swiper-slide {
   text-align: center;
@@ -53,16 +53,17 @@ width:fit-content;
 
 .swiper img{
   height: 100%;
-  width: auto;
+  width: 97%;
+  object-fit: cover;
 }
 .swiper-slide-visible{
   width: fit-content;
 }
 .swiper {
   width: 100%;
-  height: 300px;
+  height: 330px;
   margin: 20px auto;
-  max-width: 150%;
+  max-width: 100%;
 }
 .append-buttons {
   text-align: center;

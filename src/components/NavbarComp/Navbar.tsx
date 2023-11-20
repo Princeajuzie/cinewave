@@ -29,7 +29,7 @@ export default function Navbar() {
             </>
         
         </div>
-        <div className="navbar-end justify-evenly gap-[50px]">
+        <div className="flex justify-evenly items-end">
           <TbMenuDeep
             htmlFor="sidebar-mobile-fixed"
             className="text-[2.3rem]  lg:hidden cursor-pointer "
