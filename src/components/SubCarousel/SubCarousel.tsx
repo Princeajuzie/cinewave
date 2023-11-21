@@ -85,16 +85,17 @@ export default function SubCarousel() {
           </div>
 
           <Swiper
-            modules={[Virtual, Navigation, Pagination]}
-            slidesPerView={4}
-            centeredSlides={false}
-            spaceBetween={20}
-            width={1000}
-            pagination={{
-              type: "fraction",
-            }}
-            navigation={true}
-            virtual
+          modules={[Virtual, Navigation, Pagination]}
+          slidesPerView={4}
+          centeredSlides={false}
+          spaceBetween={15}
+          width={1000}
+          pagination={{
+            type: "fraction",
+          }}
+          
+          navigation={true}
+          virtual
           >
             {MoviesData.map((data) => (
               <SwiperSlide key={data.id} virtualIndex={data.id}>
@@ -152,6 +153,7 @@ export default function SubCarousel() {
           pagination={{
             type: "fraction",
           }}
+          
           navigation={true}
           virtual
           >

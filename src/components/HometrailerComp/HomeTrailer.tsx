@@ -84,12 +84,14 @@ export default function HomeTrailer(): JSX.Element {
   
         
   
-       <div className="h-[100%]  flex justify-center items-center w-auto m-auto  bg-[cover] ease-in-out rounded-xl bg-transition bg-image-transition"   style={{
+       <div className="h-[80%]  flex justify-center items-center w-auto m-auto  bg-[cover] ease-in-out rounded-xl bg-transition bg-image-transition"   style={{
                 backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://www.themoviedb.org/t/p/w1280/${selectedMovies.backdrop_path})`,
                 backgroundPosition: "top center",
                 transition: " all .5s"
               }}>
-  
+      <div>
+      
+      </div>
         <Swiper
           modules={[Virtual, Navigation, Pagination]}
 
@@ -120,13 +122,13 @@ export default function HomeTrailer(): JSX.Element {
             <img
               src={`https://www.themoviedb.org/t/p/w710_and_h400_multi_faces/${data.backdrop_path}`}
               alt=""
-              className="rounded-lg h-[100%] w-[100%] object-cover flex items-center justify-center mt-[50px]"
+              className="rounded-lg h-[100%] w-[100%] object-cover flex items-center justify-center mt-[120px]"
               onMouseEnter={() => {
                   setSelectedMovie(data);
               }}
             />
               </div>
-            <FaPlay className="absolute text-[#fff] top-[7rem] left-[8rem] text-[2rem] transform scale-1 transition duration-200 ease-in-out" />
+            <FaPlay className="absolute text-[#fff] top-[12rem] left-[8rem] text-[2rem] transform scale-1 transition duration-200 ease-in-out" />
           </div>
         </abbr>
             <p className="text-[#fff] text-[1rem] border-[none]">{data.name}</p>
