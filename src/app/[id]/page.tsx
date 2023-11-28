@@ -17,6 +17,13 @@ import Leftsidebar from "@/components/LeftsidebarComp/LeftSidebar";
 
 export default function Page() {
 
+  //Property 'cast' does not exist on type '{ id: number; profile_path: string | null; original_name: string; cast: any; }[]'.t
+
+  interface Cast {
+    id: number;
+profile_path: string | null;
+original_name: string;
+}
   interface Data {
     id: number;
     original_title: string;
@@ -24,17 +31,18 @@ export default function Page() {
     backdrop_path: string;
     release_date: string;
     status: string;
+    casts: {
+  
+      cast: Cast
+     
+    }[];
     genres: { id: number; name: string }[];
     vote_average: number;
     vote_count: number;
     runtime: number;
     overview: string;
-    casts: {
-      id: number;
-      profile_path: string | null;
-      original_name: string;
-      cast : any;
-    }[];
+
+  
   }
   
   const router = useParams();
@@ -44,15 +52,16 @@ export default function Page() {
   const [loading, setLoading] = useState<boolean>(true);
   const [loading2, setLoading2] = useState<boolean>(true);
   const [bookmark, setBookmark] = useState<boolean>(false);
-
+const [cast, setcast] = useState<Cast[]>([]);
   const [datakey, setDatakey] = useState<null | any>(null);
 
   const FetchVideoDetails = async function () {
     try {
       const response = await TmdpConfig.get(`movie/${router.id}`);
       const value = response.data;
-
-      console.log(value);
+      const sub = response.data.casts.cast;
+      setcast(sub)
+      console.log("sub", sub);
       
 
       if (value.id === parseInt(router.id as string)) {
@@ -114,6 +123,10 @@ export default function Page() {
     }
   };
 
+  console.log("cast",cast && cast.map((value:any)=>{
+    return value
+  }));
+  
 
   // fetch my video
   useEffect(() => {
@@ -266,9 +279,11 @@ export default function Page() {
                         initial="hidden"
                         animate="visible"
                       >
+
                         <ul className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 lg:gap-[2.5rem] md:gap-[2.5rem] gap-[2.5rem] ">
-                          {data.casts.cast.map((data) => {
+                          {cast && cast.map((data : any) => {
                             return (
+                              
                               <Link
                                 href={`https://www.google.com/search?q=${data.name}`}
                                 target="_blank"
