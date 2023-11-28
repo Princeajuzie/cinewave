@@ -78,7 +78,7 @@ export default function SubCarousel() {
           </ul>
         </div>
       ) : (
-        <div className="w-[100%]">
+        <div className="w-[100%] h-auto">
           <div className="flex items-center mt-6 gap-2 font-[700] hover:text-gray-200  cursor-pointer  text-[20px] ">
             <h1 className="">Popular Movies </h1>
             <FiTrendingUp />
@@ -88,12 +88,27 @@ export default function SubCarousel() {
           modules={[Virtual, Navigation, Pagination]}
           slidesPerView={4}
           centeredSlides={false}
-          spaceBetween={15}
-          width={1000}
-          pagination={{
-            type: "fraction",
+          spaceBetween={10}
+          width={900}
+     
+          breakpoints={{
+            473 :{
+              slidesPerView: 3,
+              spaceBetween: 10,
+            },
+            640: {
+              slidesPerView: 4,
+              spaceBetween: 10,
+            },
+            768: {
+              slidesPerView: 4,
+              spaceBetween: 20,
+            },
+            1024: {
+              slidesPerView: 4.5,
+              spaceBetween: 10,
+            },
           }}
-          
           navigation={true}
           virtual
           >
@@ -149,11 +164,22 @@ export default function SubCarousel() {
           slidesPerView={4}
           centeredSlides={false}
           spaceBetween={15}
-          width={1000}
-          pagination={{
-            type: "fraction",
+          width={900}
+        
+          breakpoints={{
+            640: {
+              slidesPerView: 4,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 4,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 5,
+              spaceBetween: 20,
+            },
           }}
-          
           navigation={true}
           virtual
           >

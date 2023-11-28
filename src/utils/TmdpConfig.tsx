@@ -15,6 +15,7 @@ export default axios.create({
     API_KEY: process.env.NEXT_PUBLIC_API_KEY,
     // Append videos and cast to the URL parameters 
     append_to_response: "videos,casts",
+    
   },
 });
 
