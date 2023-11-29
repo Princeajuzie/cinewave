@@ -20,11 +20,7 @@ export default function Navbar() {
   const router = useRouter();
   const {id } = useParams()
   //use history 
-  interface AllInput {
-    type :string,
-    placeholder: string,
 
-  }
 
 
   const HandleBack = () => {

@@ -5,12 +5,12 @@ type CollapseContextProps  = {
   iscollapse: boolean,
   setIscollapse:React.Dispatch<React.SetStateAction<boolean>>,
   isLocalStorageAvailable: boolean,
-  setSize: React.Dispatch<React.SetStateAction<number | null>>,
+  setSize: React.Dispatch<React.SetStateAction<string>>,
   Handlecollapse: ()=> void,
   search: string,
-  size: number | null, 
+  size: string, 
   setSearch: React.Dispatch<React.SetStateAction<string>>,
-  handleOpen : (value:number | null)=> void,
+  handleOpen : (value: string)=> void,
 
 } | undefined
 export const CollapseContext  = createContext<CollapseContextProps | undefined>(undefined)
@@ -18,10 +18,10 @@ export const CollapseContext  = createContext<CollapseContextProps | undefined>(
 
 export  const CollapseProvider = ({children}: {children : React.ReactNode})=>{
     const isLocalStorageAvailable = typeof window !== 'undefined';
-    const [size, setSize] = useState<number | null>(null);
+    const [size, setSize] = useState<string>("");
     const [search, setSearch] = useState("")
  
-    const handleOpen = (value: number | null) => setSize(value);
+    const handleOpen = (value: string) => setSize(value);
   
 	const [iscollapse, setIscollapse] = useState(
 	  isLocalStorageAvailable
