@@ -31,6 +31,7 @@ export default function Page() {
     release_date: string;
     status: string;
     setData: React.Dispatch<React.SetStateAction<null>>;
+    setSelectedMovie2: React.Dispatch<React.SetStateAction<any>>
     handleOpen: (value: string) => void;
     casts: {
       cast: Cast;

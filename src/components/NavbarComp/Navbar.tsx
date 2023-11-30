@@ -7,31 +7,29 @@ import { PiMonitorFill } from "react-icons/pi";
 import { PiBookmarksFill } from "react-icons/pi";
 import { IoIosArrowBack } from "react-icons/io";
 import { Input, Button } from "@material-tailwind/react";
-import {usePathname }from "next/navigation";
+import { usePathname } from "next/navigation";
 import { TbMenuDeep } from "react-icons/tb";
 import { useParams } from "next/navigation.js";
-  declare module "@material-tailwind/react" {
+declare module "@material-tailwind/react" {
   interface InputProps {
     crossOrigin?: string;
   }
 }
 export default function Navbar() {
-  const pathname = usePathname()
+  const pathname = usePathname();
   const router = useRouter();
-  const {id } = useParams()
-  //use history 
-
-
+  const { id } = useParams();
+  //use history
 
   const HandleBack = () => {
-     router.back()
-  }
+    router.back();
+  };
   return (
     <>
       <div className="navbar bg-[#1C1C1C] rounded-lg lg:gap-0 gap-[1rem] navbar-sticky z-[55]">
         <div className="navbar-start  lg:pl-[100px] pl-[10px] whitespace-nowrap ">
-          {pathname === "/" ?
-          
+          {/* home page navbar  */}
+          {pathname === "/" ? (
             <>
               <a className="navbar-item lg:text-[20px] w-auto font-[500] sm:text-[15px] flex items-center gap-2">
                 <span className="line-clamp-2">Popular Movies</span>
@@ -42,10 +40,26 @@ export default function Navbar() {
                 Genre
               </a>
             </>
-            : <></>
-        }
+          ) : (
+            <></>
+          )}
+          {/* bookmark page navbar  */}
+          {pathname === "/bookmark" ? (
+            <>
+              <div className="navbar-item lg:text-[20px] font-[500] sm:text-[15px] flex items-center gap-2">
+                <span>Bookmarks</span>
+                <PiBookmarksFill className="text-[30px]" />
+              </div>
 
-{pathname === "/trending" ? (
+              <button className="w-[100%] py-[8px] px-[10px] h-[fit-content] lg:w-[auto] lg:px-[30px] lg:py-[8px]  rounded-md bg-[#E50914]">
+                All BookMarks
+              </button>
+            </>
+          ) : (
+            ""
+          )}
+          {/* trending page navbar  */}
+          {pathname === "/trending" ? (
             <>
               <a className="navbar-item lg:text-[20px] font-[500] sm:text-[15px] flex items-center gap-2">
                 <span>discover Movies</span>
@@ -58,7 +72,7 @@ export default function Navbar() {
 
               <div className="hidden items-center gap-x-2 lg:flex">
                 <div className="relative flex w-full gap-2 md:w-max">
-                  <Input 
+                  <Input
                     type="search"
                     placeholder="Search"
                     // onChange={(e) => {
@@ -105,28 +119,25 @@ export default function Navbar() {
           ) : (
             ""
           )}
-            {pathname.includes(`/${id}`) ? (
-      <div
-      className="h-[fit-content] w-[100px]   py-[8px] text-center rounded-md bg-[#E50914] flex items-center justify-center cursor-pointer"
-      onClick={HandleBack}
-    >
-      <IoIosArrowBack className="text-[#fff] lg:text-[20px] text-[20px]" />
-      <span>Back</span>
-    </div>
-            ) : <></>
-        
-            }
-        
+          {pathname.includes(`/${id}`) ? (
+            <div
+              className="h-[fit-content] w-[100px]   py-[8px] text-center rounded-md bg-[#E50914] flex items-center justify-center cursor-pointer"
+              onClick={HandleBack}
+            >
+              <IoIosArrowBack className="text-[#fff] lg:text-[20px] text-[20px]" />
+              <span>Back</span>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
         <div className="flex justify-evenly items-end pr-[8px]">
           <TbMenuDeep
             htmlFor="sidebar-mobile-fixed"
             className="text-[2.3rem]  lg:hidden cursor-pointer "
-    
           />
         </div>
       </div>
-
     </>
   );
 }

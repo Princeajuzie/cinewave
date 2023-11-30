@@ -19,6 +19,7 @@ interface Props {
     id: number;
     original_title: string,
   };
+  // setSelectedMovie2: React.Dispatch<React.SetStateAction<any>>
 }
 
 
@@ -32,6 +33,7 @@ const UseMovieDialog: React.FC<Props> = ({
   size,
   handleOpen,
   selectedMovies2,
+
 }) => {
   const [loading2, setLoading2] = useState<boolean>(true);
   const [vidinfo, setvidinfo] = useState<any | null>(null);

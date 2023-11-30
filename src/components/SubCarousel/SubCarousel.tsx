@@ -88,17 +88,36 @@ export default function SubCarousel() {
           modules={[Virtual, Navigation, Pagination]}
           slidesPerView={4}
           centeredSlides={false}
-          spaceBetween={10}
-          width={900}
-     
+          spaceBetween={15}
+          width={1000}
+        
+          // breakpoints={{
+          //   640: {
+          //     slidesPerView: 4,
+          //     spaceBetween: 20,
+          //   },
+          //   768: {
+          //     slidesPerView: 4,
+          //     spaceBetween: 20,
+          //   },
+          //   1024: {
+          //     slidesPerView: 5,
+          //     spaceBetween: 10,
+          //   },
+          // }}
+
           breakpoints={{
-            473 :{
-              slidesPerView: 3,
-              spaceBetween: 10,
+                 200: {
+              slidesPerView: 7,
+              spaceBetween: 8,
             },
-            640: {
-              slidesPerView: 4,
-              spaceBetween: 10,
+                 510: {
+              slidesPerView: 7,
+              spaceBetween: 8,
+            },
+                 640: {
+              slidesPerView: 7,
+              spaceBetween: 8,
             },
             768: {
               slidesPerView: 4,
@@ -106,7 +125,7 @@ export default function SubCarousel() {
             },
             1024: {
               slidesPerView: 4.5,
-              spaceBetween: 10,
+              spaceBetween: 15,
             },
           }}
           navigation={true}
@@ -164,22 +183,30 @@ export default function SubCarousel() {
           slidesPerView={4}
           centeredSlides={false}
           spaceBetween={15}
-          width={900}
+          width={1000}
         
           breakpoints={{
+            200: {
+         slidesPerView: 7,
+         spaceBetween: 8,
+       },
+            510: {
+         slidesPerView: 7,
+         spaceBetween: 8,
+       },
             640: {
-              slidesPerView: 4,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 4,
-              spaceBetween: 40,
-            },
-            1024: {
-              slidesPerView: 5,
-              spaceBetween: 20,
-            },
-          }}
+         slidesPerView: 7,
+         spaceBetween: 8,
+       },
+       768: {
+         slidesPerView: 4,
+         spaceBetween: 20,
+       },
+       1024: {
+         slidesPerView: 4.5,
+         spaceBetween: 15,
+       },
+     }}
           navigation={true}
           virtual
           >
