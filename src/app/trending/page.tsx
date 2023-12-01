@@ -96,7 +96,7 @@ export default function Page() {
     <>
       <div className="lg:pl-[7rem] px-2 ">
         <div>
-          <Navbar />
+          <Navbar HandleSearch={HandleSearch} />
         </div>
         <div>
           <Leftsidebar />

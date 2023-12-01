@@ -30,7 +30,7 @@ export default function Page() {
     <>
       <div>
       <div>
-        <Navbar />
+        <Navbar HandleSearch={() => {}}/>
       </div>
 
       <div>
