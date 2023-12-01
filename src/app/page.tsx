@@ -11,7 +11,7 @@ export default function Home(): JSX.Element{
    <div>
     <nav>
 
-   <Navbar />
+   <Navbar HandleSearch={() => {}}/>
     </nav>
 
     <main>
