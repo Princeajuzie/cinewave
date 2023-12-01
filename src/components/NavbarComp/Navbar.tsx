@@ -10,16 +10,42 @@ import { Input, Button } from "@material-tailwind/react";
 import { usePathname } from "next/navigation";
 import { TbMenuDeep } from "react-icons/tb";
 import { useParams } from "next/navigation.js";
+import MinSidebar from "@/components/MinSidebar/MinSidebar";
+import { UseCollapse } from "@/hooks/UseCollapse";
 declare module "@material-tailwind/react" {
   interface InputProps {
     crossOrigin?: string;
   }
 }
-export default function Navbar() {
+export default function Navbar({HandleSearch}: {
+  HandleSearch: (searchKey: string) => void
+}) {
   const pathname = usePathname();
   const router = useRouter();
   const { id } = useParams();
   //use history
+
+  const { search, setSearch } = UseCollapse();
+
+  const isLocalStorageAvailable = typeof window !== "undefined";
+
+  const [toggle, setIstoggle] = useState<boolean>(
+    isLocalStorageAvailable ? localStorage.getItem("istoggle") === "true" : true
+  );
+
+  const HandleToggle = useCallback(() => {
+    setIstoggle((prev) => !prev);
+    if (isLocalStorageAvailable) {
+      localStorage.setItem("istoggle", `${!toggle}`);
+    }
+  }, [toggle]);
+  console.log(search);
+  useEffect(() => {
+    if (router) {
+      
+    }
+  }, [router]);
+
 
   const HandleBack = () => {
     router.back();
@@ -134,10 +160,12 @@ export default function Navbar() {
         <div className="flex justify-evenly items-end pr-[8px]">
           <TbMenuDeep
             htmlFor="sidebar-mobile-fixed"
+            onClick={HandleToggle}
             className="text-[2.3rem]  lg:hidden cursor-pointer "
           />
         </div>
       </div>
+      <MinSidebar toggle={toggle} HandleToggle={HandleToggle} />
     </>
   );
 }
