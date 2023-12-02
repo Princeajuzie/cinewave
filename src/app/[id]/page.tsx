@@ -141,7 +141,7 @@ export default function Page() {
       {data ? (
         <>
           <div>
-            <Navbar HandleSearch={handleOpen} />
+            <Navbar   />
           </div>
           <div>
             <Leftsidebar />

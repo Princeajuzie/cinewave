@@ -18,7 +18,7 @@ declare module "@material-tailwind/react" {
   }
 }
 export default function Navbar({HandleSearch}: {
-  HandleSearch: (searchKey: string) => void
+  HandleSearch?: (searchKey: string) => void
 }) {
   const pathname = usePathname();
   const router = useRouter();

@@ -26,11 +26,15 @@ export default function Page() {
     }
       
     },[])
+
+    function name(params:any) {
+      
+    }
   return (
     <>
       <div>
       <div>
-        <Navbar HandleSearch={() => {}}/>
+        <Navbar />
       </div>
 
       <div>

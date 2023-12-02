@@ -1,3 +1,4 @@
+"use server"
 import HeroCarousel from '@/components/CarouselComp/HeroCarousel'
 import Footer from '@/components/FooterComp/Footer'
 import Leftsidebar from '@/components/LeftsidebarComp/LeftSidebar'
@@ -5,13 +6,16 @@ import Navbar from '@/components/NavbarComp/Navbar'
 import SubCarousel from '@/components/SubCarousel/SubCarousel'
 import Image from 'next/image'
 
-export default function Home(): JSX.Element{
+export default async function  Home(){
+  "use server";
+
+
   return (
    <>
    <div>
     <nav>
 
-   <Navbar HandleSearch={() => {}}/>
+   <Navbar />
     </nav>
 
     <main>
