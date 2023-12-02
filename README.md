@@ -12,14 +12,16 @@ Cinewave is a web application created by Prince Ajuzie that leverages the [TMDB 
 
 ## Screenshots
 
-![App Screenshot](/src/images/app-preview-one.png)
-![App Screenshot](/src/images/app-preview-two.png)
-![App Screenshot](/src/images/app-preview-three.png)
-![App Screenshot](/src/images/app-preview-four.png)
+![App Screenshot](/src/assets/svg/Image-readme1.svg)
+![App Screenshot](/src/assets/svg/Image-readme2.svg)
+![App Screenshot](/src/assets/svg/Image-readme3.svg)
+![App Screenshot](/src/assets/svg/Image-readme4.svg)
+![App Screenshot](/src/assets/svg/Image-readme5.svg)
+![App Screenshot](/src/assets/svg/Image-readme6.svg)
 
 ## Feedback
 
-If you have any feedback about the website, please reach out to Prince Ajuzie via email at princeajuzie1@gmail.com.
+If you have any feedback about the website, please reach out to Prince Ajuzie via email at [princeajuzie1@gmail.com](mailto:princeajuzie1@gmail.com).
 
 ## FAQ
 
@@ -29,8 +31,8 @@ No, you can only search for movies, watch trailers, or bookmark them.
 
 ## Author
 
-- [@princeajuzie](https://www.github.com/princeajuzie)
+- [@princeajuzie](https://bio.link/princeaj)
 
 ## 🚀 About Me
 
-I'm Prince Ajuzie, a front-end web developer.
+I'm Prince Ajuzie, a front-end Engineer.
