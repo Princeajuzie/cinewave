@@ -18,7 +18,7 @@ declare module "@material-tailwind/react" {
   }
 }
 export default function Navbar({HandleSearch}: {
-  HandleSearch?: (searchKey: string) => void
+  HandleSearch?: (searchKey: string) => void | null
 }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -46,7 +46,11 @@ export default function Navbar({HandleSearch}: {
     }
   }, [router]);
 
-
+  const handleSubmit = () => {
+    if (HandleSearch) {
+      HandleSearch(search);
+    }
+  };
   const HandleBack = () => {
     router.back();
   };
@@ -101,10 +105,10 @@ export default function Navbar({HandleSearch}: {
                   <Input
                     type="search"
                     placeholder="Search"
-                    // onChange={(e) => {
-                    //   setSearch(e.target.value);
-                    //   HandleSearch(search);
-                    // }}
+                    onChange={(e) => {
+                      setSearch(e.target.value);
+                      handleSubmit();
+                    }}
                     containerProps={{
                       className: "min-w-[288px]",
                     }}

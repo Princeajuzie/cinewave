@@ -48,7 +48,7 @@ export default function Page() {
       console.log(error);
     }
   };
-  const HandleSearch = async (searchKey: string) => {
+  const HandleSearch: any = async (searchKey: string) => {
     try {
       const response = await TmdpConfig.get(`search/movie?language=en-US`, {
         params: {
