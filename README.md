@@ -1,25 +1,36 @@
-CineWave
-CineWave is a website that consumes TMDB API and allows you to search movies and tv shows and watch its trailer.
+# Cinewave
 
-Features
-Search for movies and tv shows.
-Light and dark mode toggler
-Watch movies and tv shows trailer
-Bookmarking functionality
-Documentation
-Checkout the documentation website moviematrix-docs
-Screenshots
-App Screenshot App Screenshot App Screenshot App Screenshot
+Cinewave is a web application created by Prince Ajuzie that leverages the [TMDB API](https://developers.themoviedb.org/3). It provides users with the ability to search for movies and TV shows, watch trailers, and includes a bookmarking functionality.
 
-Feedbacks
-If you have any feedbacks about the website, you can reach me out by
+## Features
 
-Sending me an email at alicalimli76@gmail.com.
-FAQ
-Can we watch movies in this website?
-No, You can only search movies and watch trailers or even bookmark them.
+- Search for movies and TV shows.
+- Toggle between light and dark modes.
+- Watch movie and TV show trailers.
+- Bookmarking functionality.
 
-Authors
-@princeajuzie
-🚀 About Me
-I'm a front-end web developer.
+
+## Screenshots
+
+![App Screenshot](/src/images/app-preview-one.png)
+![App Screenshot](/src/images/app-preview-two.png)
+![App Screenshot](/src/images/app-preview-three.png)
+![App Screenshot](/src/images/app-preview-four.png)
+
+## Feedback
+
+If you have any feedback about the website, please reach out to Prince Ajuzie via email at princeajuzie1@gmail.com.
+
+## FAQ
+
+#### Can we watch movies on this website?
+
+No, you can only search for movies, watch trailers, or bookmark them.
+
+## Author
+
+- [@princeajuzie](https://www.github.com/princeajuzie)
+
+## 🚀 About Me
+
+I'm Prince Ajuzie, a front-end web developer.
