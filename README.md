@@ -1,37 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+CineWave
+CineWave is a website that consumes TMDB API and allows you to search movies and tv shows and watch its trailer.
 
-## Getting Started
+Features
+Search for movies and tv shows.
+Light and dark mode toggler
+Watch movies and tv shows trailer
+Bookmarking functionality
+Documentation
+Checkout the documentation website moviematrix-docs
+Screenshots
+App Screenshot App Screenshot App Screenshot App Screenshot
 
-First, run the development server:
+Feedbacks
+If you have any feedbacks about the website, you can reach me out by
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Sending me an email at alicalimli76@gmail.com.
+FAQ
+Can we watch movies in this website?
+No, You can only search movies and watch trailers or even bookmark them.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# cinewave
+Authors
+@princeajuzie
+🚀 About Me
+I'm a front-end web developer.
