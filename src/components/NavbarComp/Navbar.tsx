@@ -29,16 +29,29 @@ export default function Navbar({HandleSearch}: {
 
   const isLocalStorageAvailable = typeof window !== "undefined";
 
-  const [toggle, setIstoggle] = useState<boolean>(
-    isLocalStorageAvailable ? localStorage.getItem("istoggle") === "true" : true
-  );
+  // const [toggle, setIstoggle] = useState<boolean>(
+  //   isLocalStorageAvailable ? localStorage.getItem("istoggle") === "true" : true
+  // );
+
+  // ...
+
+const [toggle, setIstoggle] = useState(() => {
+  if (isLocalStorageAvailable) {
+    const storedValue = localStorage.getItem('iscollapse');
+    return storedValue ? storedValue === 'true' : true;
+  }
+  return true;
+});
+
+// ...
+
 
   const HandleToggle = useCallback(() => {
     setIstoggle((prev) => !prev);
     if (isLocalStorageAvailable) {
       localStorage.setItem("istoggle", `${!toggle}`);
     }
-  }, [toggle]);
+  }, [toggle,isLocalStorageAvailable]);
   console.log(search);
   useEffect(() => {
     if (router) {
@@ -169,7 +182,7 @@ export default function Navbar({HandleSearch}: {
           />
         </div>
       </div>
-      <MinSidebar toggle={toggle} HandleToggle={HandleToggle} />
+      <MinSidebar toggle={toggle} HandleToggle={HandleToggle} setIstoggle={setIstoggle} />
     </>
   );
 }

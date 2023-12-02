@@ -1,10 +1,11 @@
 "use client";
+import React from "react"
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { AiTwotoneHome } from "react-icons/ai";
 import { BsFillBookmarksFill } from "react-icons/bs";
 import { BsFire } from "react-icons/bs";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect,  } from "react";
 import { useRouter } from "next/router"; // Import the useRouter hook
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
@@ -12,18 +13,22 @@ import { motion } from "framer-motion";
 export default function MinSidebar({
   toggle,
   HandleToggle,
+  setIstoggle
 }: {
   toggle: boolean;
   HandleToggle: () => void;
+  setIstoggle: React.Dispatch<React.SetStateAction<boolean>>,
 }) {
     const pathname = usePathname();
   const [hideSidebar, setHideSidebar] = useState<boolean>(false);
 
   useEffect(() => {
     // Check the screen size and set hideSidebar accordingly
+    
     const handleResize = () => {
-      if (window.innerWidth > 959) {
+      if (window.innerWidth > 959 && toggle) {
         setHideSidebar(true); // Hide the sidebar on small screens
+        
       } else {
         setHideSidebar(false); // Show the sidebar on larger screens
       }
@@ -39,7 +44,7 @@ export default function MinSidebar({
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [toggle]);
 
   const Nav_animation = {
     open: {

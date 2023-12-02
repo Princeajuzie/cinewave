@@ -5,7 +5,6 @@ Cinewave is a web application created by Prince Ajuzie that leverages the [TMDB 
 ## Features
 
 - Search for movies and TV shows.
-- Toggle between light and dark modes.
 - Watch movie and TV show trailers.
 - Bookmarking functionality.
 

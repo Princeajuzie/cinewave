@@ -29,6 +29,14 @@ export  const CollapseProvider = ({children}: {children : React.ReactNode})=>{
 		: true
 	);
 
+  // const [iscollapse, setIscollapse] = useState(() => {
+  //   if (isLocalStorageAvailable) {
+  //     const storedValue = localStorage.getItem('iscollapse');
+  //     return storedValue ? storedValue === 'false' : true;
+  //   }
+  //   return true;
+  // });
+  
 
       const Handlecollapse = useCallback(()=>{
         setIscollapse((prev) => !prev);
