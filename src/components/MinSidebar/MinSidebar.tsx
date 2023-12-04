@@ -28,7 +28,7 @@ export default function MinSidebar({
 
   const initialHideSidebar = storedHideSidebar !== null
     ? JSON.parse(storedHideSidebar)
-    :  window.innerWidth ;
+    :  isLocalStorageAvailable &&  window.innerWidth ;
 
   const [hideSidebar, setHideSidebar] = useState(initialHideSidebar);
 
