@@ -19,33 +19,28 @@ export default function MinSidebar({
   HandleToggle: () => void;
   setIstoggle: React.Dispatch<React.SetStateAction<boolean>>,
 }) {
-    const pathname = usePathname();
-  const [hideSidebar, setHideSidebar] = useState<boolean>(false);
+  const pathname = usePathname();
 
+  const [hideSidebar, setHideSidebar] = useState(false);
+  
   useEffect(() => {
-    // Check the screen size and set hideSidebar accordingly
-    
     const handleResize = () => {
-      if (window.innerWidth > 959 && toggle) {
-        setHideSidebar(true); // Hide the sidebar on small screens
-        
+      if (typeof window !== "undefined" && window.innerWidth > 959 && toggle) {
+        setHideSidebar(true); 
       } else {
-        setHideSidebar(false); // Show the sidebar on larger screens
+        setHideSidebar(false);
       }
     };
-
-    // Initial check on component mount
-    handleResize();
-
-    // Listen for window resize events
-    window.addEventListener("resize", handleResize);
-
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+  
+    if (typeof window !== "undefined") {
+      handleResize();
+      window.addEventListener("resize", handleResize);
+  
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };  
+    }
   }, [toggle]);
-
   const Nav_animation = {
     open: {
       width: "15rem",

@@ -12,33 +12,34 @@ import { useRouter } from "next/router"; // Import the useRouter hook
 
 export default function Leftsidebar() {
   const { iscollapse, Handlecollapse } = UseCollapse();
-  const pathname = usePathname(); // Get the current route using useRouter
+  const isLocalStorageAvailable = typeof window !== 'undefined';
+  const pathname = usePathname(); 
+
   const [hideSidebar, setHideSidebar] = useState(() => {
-    return window.innerWidth < 959 && iscollapse;
+    if (typeof window !== "undefined" && window.innerWidth < 959 && iscollapse) {
+      return true;
+    } 
+    return false;
   });
   
-
   useEffect(() => {
-    // Check the screen size and set hideSidebar accordingly
     const handleResize = () => {
-      if (window.innerWidth < 959) {
-        setHideSidebar(iscollapse); // Set hideSidebar based on iscollapse for small screens
+      if (typeof window !== "undefined" && window.innerWidth < 959) {
+        setHideSidebar(iscollapse); 
       } else {
-        setHideSidebar(false); // Show the sidebar on larger screens
+        setHideSidebar(false);
       }
     };
   
-    // Initial check on component mount
-    handleResize();
+    if (typeof window !== "undefined") {
+      handleResize();
+      window.addEventListener("resize", handleResize);
   
-    // Listen for window resize events
-    window.addEventListener("resize", handleResize);
-  
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [iscollapse]); // Include iscollapse as a dependency
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, [iscollapse]);
   
 
 
