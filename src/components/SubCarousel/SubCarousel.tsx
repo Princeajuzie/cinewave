@@ -62,6 +62,32 @@ export default function SubCarousel() {
     HandleFetch2(randomValue);
   }, []);
 
+
+  // skeleton media screen 
+
+
+  const [numPlaceholders, setNumPlaceholders] = useState(5)
+
+  const HandleResize = () => {
+    if (window.innerWidth < 959) {
+      setNumPlaceholders(2); // Set the number of placeholders for smaller screens
+    } else {
+      setNumPlaceholders(5); // Set the default number of placeholders for larger screens
+    }
+  };
+
+  useEffect(() => {
+    // Initial setup
+    HandleResize();
+
+    // Event listener for resizing
+    window.addEventListener('resize', HandleResize);
+
+    // Cleanup the event listener
+    return () => {
+      window.removeEventListener('resize', HandleResize);
+    };
+  }, []);
   return (
     <>
       {/* first children carousel  */}
@@ -69,7 +95,7 @@ export default function SubCarousel() {
         <div className="w-[100%]">
           <div className="flex items-center mt-6  bg-[#777676] animate-pulse h-[15px] w-[18%] rounded-[6px] "></div>
           <ul className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-2 gap-[18px] mt-5">
-            {Array.from({ length: 5 }, (_, index) => (
+            {Array.from({ length: numPlaceholders }, (_, index) => (
               <li
                 className="w-[100%] h-[300px] rounded-lg p-[80px] animate-pulse bg-[#777676] placeholder-shimmer"
                 key={index}
@@ -162,7 +188,7 @@ export default function SubCarousel() {
         <div className="w-[100%]">
           <div className="flex items-center mt-6  bg-[#777676] animate-pulse h-[15px] w-[18%] rounded-[6px] "></div>
           <ul className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-2 gap-[18px] mt-5">
-            {Array.from({ length: 5 }, (_, index) => (
+            {Array.from({ length: numPlaceholders}, (_, index) => (
               <li
                 className="w-[100%] h-[300px] rounded-lg p-[80px] animate-pulse bg-[#777676] placeholder-shimmer"
                 key={index}

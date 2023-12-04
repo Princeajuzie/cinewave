@@ -5,7 +5,7 @@ import { AiTwotoneHome } from "react-icons/ai";
 import { BsFillBookmarksFill } from "react-icons/bs";
 import { BsFire } from "react-icons/bs";
 import Link from "next/link";
-import { useState, useEffect,  } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { useRouter } from "next/router"; // Import the useRouter hook
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
@@ -20,27 +20,37 @@ export default function MinSidebar({
   setIstoggle: React.Dispatch<React.SetStateAction<boolean>>,
 }) {
   const pathname = usePathname();
+  const isLocalStorageAvailable = typeof window !== 'undefined';
 
-  const [hideSidebar, setHideSidebar] = useState(false);
-  
+  const storedHideSidebar = isLocalStorageAvailable
+    ? localStorage.getItem('toggle')
+    : null;
+
+  const initialHideSidebar = storedHideSidebar !== null
+    ? JSON.parse(storedHideSidebar)
+    : window.innerWidth ;
+
+  const [hideSidebar, setHideSidebar] = useState(initialHideSidebar);
+
+  // useEffect for subsequent renders (resizing)
   useEffect(() => {
     const handleResize = () => {
-      if (typeof window !== "undefined" && window.innerWidth > 959 && toggle) {
+      if (typeof window !== 'undefined' && window.innerWidth < 959) {
         setHideSidebar(true); 
       } else {
         setHideSidebar(false);
       }
     };
-  
-    if (typeof window !== "undefined") {
-      handleResize();
-      window.addEventListener("resize", handleResize);
-  
+
+    handleResize();
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+
       return () => {
-        window.removeEventListener("resize", handleResize);
-      };  
+        window.removeEventListener('resize', handleResize);
+      };
     }
-  }, [toggle]);
+  }, []);
   const Nav_animation = {
     open: {
       width: "15rem",
@@ -70,7 +80,7 @@ export default function MinSidebar({
           variants={Nav_animation}
           animate={toggle ? "open" : "close"}
           className={` ${"sidebar h-full sidebar-fixed-left justify-start "}  ${
-            hideSidebar ? "hidden" : ""
+            hideSidebar ? "hidden" : "block"
           } sidebar-transition `}
           data-toggle={toggle}
         >

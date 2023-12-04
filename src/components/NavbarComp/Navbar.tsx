@@ -35,23 +35,25 @@ export default function Navbar({HandleSearch}: {
 
   // ...
 
-const [toggle, setIstoggle] = useState(() => {
-  if (isLocalStorageAvailable) {
-    const storedValue = localStorage.getItem('iscollapse');
-    return storedValue ? storedValue === 'true' : true;
-  }
-  return true;
-});
-
-// ...
-
-
+  const [toggle, setIstoggle] = useState(() => {
+    const localStorageKey = 'istoggle';
+    if (isLocalStorageAvailable) {
+      const storedValue = localStorage.getItem(localStorageKey);
+      return storedValue !== null ? storedValue === 'true' : false;
+    }
+    return false;
+  });
+  
+  // ...
+  
   const HandleToggle = useCallback(() => {
     setIstoggle((prev) => !prev);
     if (isLocalStorageAvailable) {
-      localStorage.setItem("istoggle", `${!toggle}`);
+      const localStorageKey = 'istoggle';
+      localStorage.setItem(localStorageKey, `${!toggle}`);
     }
-  }, [toggle,isLocalStorageAvailable]);
+  }, [toggle, isLocalStorageAvailable]);
+  
   console.log(search);
   useEffect(() => {
     if (router) {

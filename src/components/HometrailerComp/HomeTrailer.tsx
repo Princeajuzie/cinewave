@@ -60,18 +60,20 @@ export default function HomeTrailer(): JSX.Element {
     HandleFetch(randomValue);
   }, []);
 
+
+  
   return (
     <div className=" flex flex-col items-center justify-center   w-[100%] ">
       {loading ? (
         <div className="w-[100%]">
           <div className="flex items-center mt-6  bg-[#777676] animate-pulse h-[15px] w-[18%] rounded-[6px] "></div>
-          <ul className="grid grid-cols-5 gap-[18px] mt-5">
-            {Array.from({ length: 5 }, (_, index) => (
+          <ul className=" mt-5">
+     
               <li
-                className="w-[100%] h-[300px] rounded-lg p-[80px] animate-pulse bg-[#777676] placeholder-shimmer"
-                key={index}
+                className="w-[85vw] h-[324px] rounded-lg p-[80px] animate-pulse bg-[#777676] placeholder-shimmer"
+          
               ></li>
-            ))}
+
           </ul>
         </div>
       ) : (

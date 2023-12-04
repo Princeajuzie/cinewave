@@ -6,7 +6,7 @@ import { BsFillBookmarksFill } from "react-icons/bs";
 import { BsFire } from "react-icons/bs";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import { useRouter } from "next/router"; // Import the useRouter hook
 
 
@@ -15,32 +15,43 @@ export default function Leftsidebar() {
   const isLocalStorageAvailable = typeof window !== 'undefined';
   const pathname = usePathname(); 
 
-  const [hideSidebar, setHideSidebar] = useState(() => {
-    if (typeof window !== "undefined" && window.innerWidth < 959 && iscollapse) {
-      return true;
-    } 
-    return false;
-  });
-  
+  // Use local storage value if available, otherwise check window width
+  const storedHideSidebar = isLocalStorageAvailable
+    ? localStorage.getItem('hideSidebar')
+    : null;
+
+  const initialHideSidebar = storedHideSidebar !== null
+    ? JSON.parse(storedHideSidebar)
+    : window.innerWidth < 959;
+
+  const [hideSidebar, setHideSidebar] = useState(initialHideSidebar);
+
   useEffect(() => {
     const handleResize = () => {
-      if (typeof window !== "undefined" && window.innerWidth < 959) {
-        setHideSidebar(iscollapse); 
+      if (typeof window !== 'undefined' && window.innerWidth < 959) {
+        setHideSidebar(true); 
       } else {
         setHideSidebar(false);
       }
     };
-  
-    if (typeof window !== "undefined") {
-      handleResize();
-      window.addEventListener("resize", handleResize);
-  
+
+    handleResize();
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+
       return () => {
-        window.removeEventListener("resize", handleResize);
+        window.removeEventListener('resize', handleResize);
       };
     }
-  }, [iscollapse]);
-  
+  }, []);
+
+  // Save the current value of hideSidebar to local storage whenever it changes
+  useEffect(() => {
+    if (isLocalStorageAvailable) {
+      localStorage.setItem('hideSidebar', JSON.stringify(hideSidebar));
+    }
+  }, [hideSidebar,isLocalStorageAvailable]);
+
 
 
   return (
