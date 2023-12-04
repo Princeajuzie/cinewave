@@ -26,10 +26,9 @@ export default function MinSidebar({
     ? localStorage.getItem('toggle')
     : null;
 
-    const initialHideSidebar = storedHideSidebar !== null
+  const initialHideSidebar = storedHideSidebar !== null
     ? JSON.parse(storedHideSidebar)
-    : typeof window !== 'undefined' && window.innerWidth;
-  
+    :  window.innerWidth ;
 
   const [hideSidebar, setHideSidebar] = useState(initialHideSidebar);
 
@@ -47,17 +46,14 @@ export default function MinSidebar({
     };
 
     handleResize();
-    if (isLocalStorageAvailable) {
-      if (typeof window !== 'undefined') {
-        window.addEventListener('resize', handleResize);
-    
-        return () => {
-          window.removeEventListener('resize', handleResize);
-        };
-      }
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
     }
-    
-  }, [isLocalStorageAvailable]);
+  }, []);
   const Nav_animation = {
     open: {
       width: "15rem",
