@@ -20,40 +20,44 @@ export default function MinSidebar({
   setIstoggle: React.Dispatch<React.SetStateAction<boolean>>,
 }) {
   const pathname = usePathname();
-  // const isLocalStorageAvailable = typeof window !== 'undefined';
+  const isLocalStorageAvailable = typeof window !== 'undefined';
 
-  // const storedHideSidebar = isLocalStorageAvailable
-  //   ? localStorage.getItem('toggle')
-  //   : null;
+  const storedHideSidebar = isLocalStorageAvailable
+    ? localStorage.getItem('toggle')
+    : null;
 
-  // const initialHideSidebar = storedHideSidebar !== null
-  //   ? JSON.parse(storedHideSidebar)
-  //   : window.innerWidth ;
+    const initialHideSidebar = storedHideSidebar !== null
+    ? JSON.parse(storedHideSidebar)
+    : typeof window !== 'undefined' && window.innerWidth;
+  
 
-  // const [hideSidebar, setHideSidebar] = useState(initialHideSidebar);
+  const [hideSidebar, setHideSidebar] = useState(initialHideSidebar);
 
-  // // useEffect for subsequent renders (resizing)
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     if(isLocalStorageAvailable){
+  // useEffect for subsequent renders (resizing)
+  useEffect(() => {
+    const handleResize = () => {
+      if(isLocalStorageAvailable){
 
-  //       if ( window.innerWidth < 959) {
-  //         setHideSidebar(true); 
-  //       } else {
-  //         setHideSidebar(false);
-  //       }
-  //     }
-  //   };
+        if ( window.innerWidth < 959) {
+          setHideSidebar(true); 
+        } else {
+          setHideSidebar(false);
+        }
+      }
+    };
 
-  //   handleResize();
-  //   if (isLocalStorageAvailable) {
-  //     window.addEventListener('resize', handleResize);
-
-  //     return () => {
-  //       window.removeEventListener('resize', handleResize);
-  //     };
-  //   }
-  // }, [isLocalStorageAvailable]);
+    handleResize();
+    if (isLocalStorageAvailable) {
+      if (typeof window !== 'undefined') {
+        window.addEventListener('resize', handleResize);
+    
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }
+    }
+    
+  }, [isLocalStorageAvailable]);
   const Nav_animation = {
     open: {
       width: "15rem",
@@ -82,7 +86,9 @@ export default function MinSidebar({
         <motion.aside
           variants={Nav_animation}
           animate={toggle ? "open" : "close"}
-          className={` ${"sidebar h-full sidebar-fixed-left justify-start "}   sidebar-transition `}
+          className={` ${"sidebar h-full sidebar-fixed-left justify-start "}  ${
+            hideSidebar ? "hidden" : "block"
+          } sidebar-transition `}
           data-toggle={toggle}
         >
           <section className="sidebar-title items-center p-4">
