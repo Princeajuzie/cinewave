@@ -16,45 +16,44 @@ export default function Leftsidebar() {
   const pathname = usePathname(); 
 
   // Use local storage value if available, otherwise check window width
-  const storedHideSidebar = isLocalStorageAvailable
-    ? localStorage.getItem('hideSidebar')
-    : null;
-
-  const initialHideSidebar = storedHideSidebar !== null
-    ? JSON.parse(storedHideSidebar)
-    : typeof window !== 'undefined' && window.innerWidth < 959;
+  const storedHideSidebar = localStorage.getItem('hideSidebar');
+  const initialHideSidebar = storedHideSidebar !== null ? JSON.parse(storedHideSidebar) : null;
 
   const [hideSidebar, setHideSidebar] = useState(initialHideSidebar);
 
   useEffect(() => {
     const handleResize = () => {
-      if (typeof window !== 'undefined' && window.innerWidth < 959) {
-        setHideSidebar(true); 
-      } else {
-        setHideSidebar(false);
+      if(isLocalStorageAvailable){
+
+        if (window.innerWidth < 959) {
+          setHideSidebar(true);
+        } else {
+          setHideSidebar(false);
+        }
       }
     };
 
     handleResize();
-    if (typeof window !== 'undefined') {
-      window.addEventListener('resize', handleResize);
 
+    if(isLocalStorageAvailable){
+
+      window.addEventListener('resize', handleResize);
+  
       return () => {
         window.removeEventListener('resize', handleResize);
       };
     }
   }, []);
 
-  // Save the current value of hideSidebar to local storage whenever it changes
+  // Update local storage whenever hideSidebar changes
   useEffect(() => {
-    if (isLocalStorageAvailable) {
+    if (hideSidebar !== null) {
       localStorage.setItem('hideSidebar', JSON.stringify(hideSidebar));
     }
-  }, [hideSidebar,isLocalStorageAvailable]);
+  }, [hideSidebar]);
 
 
-
-  return (
+  return hideSidebar !== null &&(
     <>
       <aside className={`sidebar h-full sidebar-fixed-left justify-start ${hideSidebar ? "hidden" : ""}  `}  data-collapse={iscollapse}>
         <section className="sidebar-title items-center p-4">
