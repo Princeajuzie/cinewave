@@ -28,15 +28,18 @@ export default function Leftsidebar() {
 
   useEffect(() => {
     const handleResize = () => {
-      if (typeof window !== 'undefined' && window.innerWidth < 959) {
-        setHideSidebar(true); 
-      } else {
-        setHideSidebar(false);
+      if(isLocalStorageAvailable){
+
+        if ( window.innerWidth < 959) {
+          setHideSidebar(true); 
+        } else {
+          setHideSidebar(false);
+        }
       }
     };
 
     handleResize();
-    if (typeof window !== 'undefined') {
+    if (isLocalStorageAvailable) {
       window.addEventListener('resize', handleResize);
 
       return () => {
