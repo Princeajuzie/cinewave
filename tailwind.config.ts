@@ -17,6 +17,7 @@ const config: Config = withMT({
     screens: {
       
       'tablet': {'max': '959px'},
+      'large': {'max': '1024px'},
       // => @media (min-width: 640px) { ... }
     },
   },

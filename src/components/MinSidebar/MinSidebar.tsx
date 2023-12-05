@@ -22,6 +22,36 @@ export default function MinSidebar({
   const pathname = usePathname();
 
 
+  useEffect(() => {
+    const handleResize = () => {
+       if(typeof window !== "undefined"){
+
+         const isDesktop = window.innerWidth >= 1024; // You can adjust the threshold as needed
+         if(isDesktop){
+
+           setIstoggle(!isDesktop);
+         }else{
+          setIstoggle(toggle)
+         }
+       }
+    };
+
+    // Call the function once to set the initial state
+    handleResize();
+
+     if(typeof window !== "undefined"){
+
+       // Add a resize event listener
+       window.addEventListener("resize", handleResize);
+   
+       // Clean up the event listener on component unmount
+       return () => {
+         window.removeEventListener("resize", handleResize);
+       };
+     }
+  }, [setIstoggle]);
+
+  
   const Nav_animation = {
     open: {
       width: "15rem",
@@ -43,15 +73,15 @@ export default function MinSidebar({
     <>
       <div className="flex">
         <div
-          className={`md:hidden fixed inset-0 w-[100%] max-h-screen z-[55] bg-black/50 ${
-            toggle ? "block" : "hidden"
+          className={` fixed inset-0 w-[100%] max-h-screen z-[55] bg-black/50 ${
+            toggle ? "block" : "hidden" 
           }`}
           onClick={HandleToggle}
         ></div>
         <motion.aside
           variants={Nav_animation}
           animate={toggle ? "open" : "close"}
-          className={` ${"sidebar h-full sidebar-fixed-left justify-start "} tablet:hidden sidebar-transition `}
+          className={` ${"sidebar h-full sidebar-fixed-left justify-start "} hidden sidebar-transition `}
           data-toggle={toggle}
         >
           <section className="sidebar-title items-center p-4">
