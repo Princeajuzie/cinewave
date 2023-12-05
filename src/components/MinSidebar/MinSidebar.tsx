@@ -20,50 +20,7 @@ export default function MinSidebar({
   setIstoggle: React.Dispatch<React.SetStateAction<boolean>>,
 }) {
   const pathname = usePathname();
-  const isLocalStorageAvailable = typeof window !== 'undefined';
 
-  const [hideSidebar, setHideSidebar] = useState<boolean | undefined>(undefined);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (isLocalStorageAvailable) {
-        if (window.innerWidth < 959) {
-          setHideSidebar(false);
-        } else {
-          setHideSidebar(true);
-        }
-      }
-    };
-
-    handleResize();
-
-    if (isLocalStorageAvailable) {
-      window.addEventListener('resize', handleResize);
-
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }
-  }, [isLocalStorageAvailable]);
-
-  useEffect(() => {
-    if (isLocalStorageAvailable) {
-      const storedHideSidebar = localStorage.getItem('hideSidebarmin');
-      const initialHideSidebar = storedHideSidebar !== null ? JSON.parse(storedHideSidebar) : undefined;
-      setHideSidebar(initialHideSidebar);
-    }
-  }, [isLocalStorageAvailable]);
-
-  useEffect(() => {
-    if (isLocalStorageAvailable && hideSidebar !== undefined) {
-      localStorage.setItem('hideSidebarmin', JSON.stringify(hideSidebar));
-    }
-  }, [hideSidebar, isLocalStorageAvailable]);
-
-  // Render null until hideSidebar is determined
-  if (hideSidebar === undefined) {
-    return null;
-  }
 
   const Nav_animation = {
     open: {
@@ -82,7 +39,7 @@ export default function MinSidebar({
   };
 
 
-  return hideSidebar !== null && (
+  return (
     <>
       <div className="flex">
         <div
@@ -94,9 +51,7 @@ export default function MinSidebar({
         <motion.aside
           variants={Nav_animation}
           animate={toggle ? "open" : "close"}
-          className={` ${"sidebar h-full sidebar-fixed-left justify-start "}  ${
-            hideSidebar ? "hidden" : "block"
-          } sidebar-transition `}
+          className={` ${"sidebar h-full sidebar-fixed-left justify-start "} tablet:hidden sidebar-transition `}
           data-toggle={toggle}
         >
           <section className="sidebar-title items-center p-4">
