@@ -12,50 +12,14 @@ import { useRouter } from "next/router"; // Import the useRouter hook
 
 export default function Leftsidebar() {
   const { iscollapse, Handlecollapse } = UseCollapse();
-  const isLocalStorageAvailable = typeof window !== 'undefined';
   const pathname = usePathname(); 
 
-  // Use local storage value if available, otherwise check window width
-  const storedHideSidebar = localStorage.getItem('hideSidebar');
-  const initialHideSidebar = storedHideSidebar !== null ? JSON.parse(storedHideSidebar) : null;
-
-  const [hideSidebar, setHideSidebar] = useState(initialHideSidebar);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if(isLocalStorageAvailable){
-
-        if (window.innerWidth < 959) {
-          setHideSidebar(true);
-        } else {
-          setHideSidebar(false);
-        }
-      }
-    };
-
-    handleResize();
-
-    if(isLocalStorageAvailable){
-
-      window.addEventListener('resize', handleResize);
-  
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }
-  }, []);
-
-  // Update local storage whenever hideSidebar changes
-  useEffect(() => {
-    if (hideSidebar !== null) {
-      localStorage.setItem('hideSidebar', JSON.stringify(hideSidebar));
-    }
-  }, [hideSidebar]);
 
 
-  return hideSidebar !== null &&(
+
+  return (
     <>
-      <aside className={`sidebar h-full sidebar-fixed-left justify-start ${hideSidebar ? "hidden" : ""}  `}  data-collapse={iscollapse}>
+      <aside className={`sidebar h-full sidebar-fixed-left justify-start tablet:hidden `}  data-collapse={iscollapse}>
         <section className="sidebar-title items-center p-4">
           <svg fill="none" height="42" viewBox="0 0 32 32" width="42" xmlns="http://www.w3.org/2000/svg">
             <rect height="100%" rx="16" width="100%"></rect>

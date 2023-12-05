@@ -14,6 +14,11 @@ const config: Config = withMT({
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
+    screens: {
+      
+      'tablet': {'max': '959px'},
+      // => @media (min-width: 640px) { ... }
+    },
   },
 rippleui :{
   removeThemes :[

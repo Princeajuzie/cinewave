@@ -22,38 +22,49 @@ export default function MinSidebar({
   const pathname = usePathname();
   const isLocalStorageAvailable = typeof window !== 'undefined';
 
-  const storedHideSidebar = isLocalStorageAvailable
-    ? localStorage.getItem('toggle')
-    : null;
+  const [hideSidebar, setHideSidebar] = useState<boolean | undefined>(undefined);
 
-  const initialHideSidebar = storedHideSidebar !== null
-    ? JSON.parse(storedHideSidebar)
-    :  isLocalStorageAvailable &&  window.innerWidth ;
-
-  const [hideSidebar, setHideSidebar] = useState(initialHideSidebar);
-
-  // useEffect for subsequent renders (resizing)
   useEffect(() => {
     const handleResize = () => {
-      if(isLocalStorageAvailable){
-
-        if ( window.innerWidth < 959) {
-          setHideSidebar(true); 
-        } else {
+      if (isLocalStorageAvailable) {
+        if (window.innerWidth < 959) {
           setHideSidebar(false);
+        } else {
+          setHideSidebar(true);
         }
       }
     };
 
     handleResize();
-    if (typeof window !== 'undefined') {
+
+    if (isLocalStorageAvailable) {
       window.addEventListener('resize', handleResize);
 
       return () => {
         window.removeEventListener('resize', handleResize);
       };
     }
-  }, []);
+  }, [isLocalStorageAvailable]);
+
+  useEffect(() => {
+    if (isLocalStorageAvailable) {
+      const storedHideSidebar = localStorage.getItem('hideSidebarmin');
+      const initialHideSidebar = storedHideSidebar !== null ? JSON.parse(storedHideSidebar) : undefined;
+      setHideSidebar(initialHideSidebar);
+    }
+  }, [isLocalStorageAvailable]);
+
+  useEffect(() => {
+    if (isLocalStorageAvailable && hideSidebar !== undefined) {
+      localStorage.setItem('hideSidebarmin', JSON.stringify(hideSidebar));
+    }
+  }, [hideSidebar, isLocalStorageAvailable]);
+
+  // Render null until hideSidebar is determined
+  if (hideSidebar === undefined) {
+    return null;
+  }
+
   const Nav_animation = {
     open: {
       width: "15rem",
@@ -70,7 +81,8 @@ export default function MinSidebar({
     },
   };
 
-  return (
+
+  return hideSidebar !== null && (
     <>
       <div className="flex">
         <div
