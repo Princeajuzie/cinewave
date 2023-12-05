@@ -12,19 +12,30 @@ import Link from "next/link";
 import TmdpConfig from "@/utils/TmdpConfig";
 import axios from "axios";
 import { UseCollapse } from "@/hooks/UseCollapse";
+import UseMovieDialog from "@/hooks/UseMovieDialog";
 
 export default function Page() {
   interface Data {
-    id: number,
-    poster_path: string,
+    id: number;
+    original_title: string;
+    name: string;
+    backdrop_path: string;
+    release_date: string;
+    status: string;
+    setData: React.Dispatch<React.SetStateAction<null>>;
+    setSelectedMovie2: React.Dispatch<React.SetStateAction<any>>
+    handleOpen: (value: string) => void;
 
+    genres: { id: number; name: string }[];
+    vote_average: number;
+    vote_count: number;
+    runtime: number;
+    overview: string;
   }
 
-  
+
   interface Paginate {
- 
-      selected : number;
-    
+    selected: number;
   }
   const [data, setData] = useState<Data[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -33,7 +44,9 @@ export default function Page() {
   const [searchResult, setSearchResult] = useState<Data[]>([]);
   const [recordsPerPage] = useState<number>(5);
   const { search, setSearch } = UseCollapse();
-
+  
+  const [ImageValue, setImageValue] = useState<Data | null>(null);
+  const { size, setSize, handleOpen } = UseCollapse();
   const HandleFetch = async (page: number) => {
     const type = "discover";
     try {
@@ -41,13 +54,18 @@ export default function Page() {
         `${type}/movie?language=en-US&page=${page}`
       );
       console.log("searching");
+      const randomIndex = Math.floor(Math.random() * 20);
+      // const randomItem = ImageValue[randomIndex];
       const Valueget = response.data.results;
       setData(Valueget);
+      setImageValue(Valueget[randomIndex]);
       setLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
+
+  console.log("ImageValue", ImageValue);
   const HandleSearch: any = async (searchKey: string) => {
     try {
       const response = await TmdpConfig.get(`search/movie?language=en-US`, {
@@ -90,6 +108,7 @@ export default function Page() {
     },
   };
 
+
   const showNextButton = currentPage !== recordsPerPage - 1;
   const showPrevButton = currentPage !== 0;
   return (
@@ -104,24 +123,36 @@ export default function Page() {
 
         <div className="pt-[5rem]  lg:pr-[30px] flex flex-col gap-[20px] justify-center">
           <div>
-            <div
-              className="  bg-cover w-[100%] flex flex-col items-start justify-end  min-h-[400px] object-contain rounded-3xl  bg-center"
-              style={{
-                backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(http://localhost:3000/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspider.4490e5f5.jpg&w=3840&q=75)`,
-                backgroundPosition: "top center",
-                transition: "background-image 0.3s ease-in-out",
-              }}
-            >
-              <div className="mb-[30px]  flex flex-col ml-3 items-start justify-end">
-                <h2 className="text-[2rem] font-semibold min-w-full">
-                  Spider-Man: Across the Spider-Verse
-                </h2>
-                <Button variant="gradient" className="w-[fitcontent]">
-                  {" "}
-                  watch Trailer
-                </Button>
-              </div>
-            </div>
+
+             
+                <>
+                  <div
+                    className="  bg-cover w-[100%] flex flex-col items-start justify-end  min-h-[400px] object-contain rounded-3xl  bg-center"
+                    style={{
+                      backgroundImage: ImageValue
+                        ? `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://www.themoviedb.org/t/p/w1280/${ImageValue.backdrop_path})`
+                        : "",
+                      backgroundPosition: "top center",
+                      transition: "background-image 0.3s ease-in-out",
+                    }}
+                    
+                    
+                  >
+                    <div className="mb-[30px]  flex flex-col ml-3 items-start justify-end">
+                      <h2 className="text-[2rem] font-semibold min-w-full">
+                        {ImageValue?.original_title}
+                      </h2>
+                      <Button variant="gradient" className="w-[fitcontent]"     onClick={() => handleOpen("md")}>
+                        {" "}
+                        watch Trailer
+                      </Button>
+                      <UseMovieDialog    size={size}
+                    handleOpen={handleOpen}
+                    selectedMovies2={ImageValue}/>
+                    </div>
+                  </div>
+                </>
+            
           </div>
 
           {search === "" ? (
@@ -141,7 +172,7 @@ export default function Page() {
                 <div className="">
                   <ul className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 autofill:grid-cols-4 gap-[1rem]">
                     {data &&
-                      data?.map((item:any) => {
+                      data?.map((item: any) => {
                         return (
                           <Link href={`/${item.id}`} key={item.id}>
                             <li key={item.id} className="  ">
@@ -217,10 +248,10 @@ export default function Page() {
                 <div className="">
                   <ul className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 autofill:grid-cols-4 gap-[1rem]">
                     {searchResult &&
-                      searchResult.map((item:any) => {
+                      searchResult.map((item: any) => {
                         return (
                           <Link href={`/${item.id}`} key={item.id}>
-                            <li  className="  ">
+                            <li className="  ">
                               <img
                                 src={`https://www.themoviedb.org/t/p/w440_and_h660_face/${item.poster_path}`}
                                 alt=""

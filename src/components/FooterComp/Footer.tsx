@@ -8,7 +8,7 @@ export default function Footer() {
 
  
 
-     <footer className="w-[auto]  bg-[#000] lg:ml-[5.8rem]">
+     <footer className="w-[auto]  bg-[#000] ">
        <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 bg-[#000] text-center md:justify-between lg:pr-[50px]">
          {/* <img src="/img/logo-ct-dark.png" alt="logo-ct" className="w-10" /> */}
          <svg fill="none" height="42" viewBox="0 0 32 32" width="42" xmlns="http://www.w3.org/2000/svg" className="w-10 bg-[#000]" >

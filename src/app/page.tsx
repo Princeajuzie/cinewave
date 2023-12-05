@@ -22,7 +22,7 @@ export default async function  Home(){
       <aside>
   <Leftsidebar />
       </aside>
-      <div className='flex flex-col items-center justify-center lg:pl-[110px] px-[20px]  mt-[80px] lg:w-[97%] w-[100%]'>
+      <div className='flex flex-col items-center justify-center lg:pl-[110px] px-[10px] lg:px-[20px]  mt-[80px] lg:w-[100%] w-[100%]'>
       <HeroCarousel />  
 
         <SubCarousel />

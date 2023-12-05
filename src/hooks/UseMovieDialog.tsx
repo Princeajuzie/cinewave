@@ -15,10 +15,7 @@ import { UseCollapse } from "./UseCollapse";
 interface Props {
   size: null |string;
   handleOpen : (value: string)=> void,
-  selectedMovies2:  {
-    id: number;
-    original_title: string,
-  };
+  selectedMovies2:  any
   // setSelectedMovie2: React.Dispatch<React.SetStateAction<any>>
 }
 
