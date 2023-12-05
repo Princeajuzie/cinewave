@@ -7,6 +7,14 @@
   margin: 0;
   background: transparent;
   padding: 0;
+  color: #E8E8E8;
+}
+body{
+  background-color: #000;
+}
+
+a{
+  color: #E8E8E8;
 }
 
 .sidebar{

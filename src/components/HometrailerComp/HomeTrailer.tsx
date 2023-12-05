@@ -94,9 +94,11 @@ export default function HomeTrailer(): JSX.Element {
             <div></div>
             <Swiper
               modules={[Virtual, Navigation, Pagination]}
+              className="text-[#E8E8E8]"
               slidesPerView={3}
               centeredSlides={false}
               spaceBetween={15}
+              color="#E8E8E8"
               width={900}
               autoplay={true}
               pagination={{

@@ -76,12 +76,12 @@ export default function Navbar({HandleSearch}: {
           {/* home page navbar  */}
           {pathname === "/" ? (
             <>
-              <a className="navbar-item lg:text-[20px] w-auto font-[500] sm:text-[15px] flex items-center gap-2">
-                <span className="line-clamp-2">Popular Movies</span>
-                <PiMonitorFill className="text-[30px]" />
+              <a className="navbar-item lg:text-[20px] w-auto font-[500] sm:text-[15px] flex items-center gap-2 ">
+                <span className="line-clamp-2 text-[#E8E8E8]">Popular Movies</span>
+                <PiMonitorFill className="text-[30px] text-[#E8E8E8]" />
               </a>
 
-              <a className="h-[fit-content] w-[100px] lg:px-[30px] py-[8px] text-center rounded-md bg-[#E50914]">
+              <a className="h-[fit-content] w-[100px] lg:px-[30px] py-[8px] text-center rounded-md bg-[#E50914] text-[#E8E8E8]">
                 Genre
               </a>
             </>
@@ -92,11 +92,11 @@ export default function Navbar({HandleSearch}: {
           {pathname === "/bookmark" ? (
             <>
               <div className="navbar-item lg:text-[20px] font-[500] sm:text-[15px] flex items-center gap-2">
-                <span>Bookmarks</span>
-                <PiBookmarksFill className="text-[30px]" />
+                <span className="text-[#E8E8E8]">Bookmarks</span>
+                <PiBookmarksFill className="text-[30px] text-[#E8E8E8]" />
               </div>
 
-              <button className="w-[100%] py-[8px] px-[10px] h-[fit-content] lg:w-[auto] lg:px-[30px] lg:py-[8px]  rounded-md bg-[#E50914]">
+              <button className="w-[100%] py-[8px] px-[10px] h-[fit-content] lg:w-[auto] lg:px-[30px] lg:py-[8px]  rounded-md bg-[#E50914] text-[#E8E8E8]">
                 All BookMarks
               </button>
             </>
@@ -107,11 +107,11 @@ export default function Navbar({HandleSearch}: {
           {pathname === "/trending" ? (
             <>
               <a className="navbar-item lg:text-[20px] font-[500] sm:text-[15px] flex items-center gap-2">
-                <span>discover Movies</span>
-                <BsFire className="text-[30px]" />
+                <span className="text-[#E8E8E8]">discover Movies</span>
+                <BsFire className="text-[30px] text-[#E8E8E8]" />
               </a>
 
-              <a className="h-[fit-content] w-[100px] lg:px-[30px] py-[8px] text-center rounded-md bg-[#E50914]">
+              <a className="h-[fit-content] w-[100px] lg:px-[30px] py-[8px] text-center rounded-md bg-[#E50914] text-[#E8E8E8]">
                 Genre
               </a>
 
@@ -133,11 +133,11 @@ export default function Navbar({HandleSearch}: {
                       className: "before:content-none after:content-none",
                     }}
                   />
-                  <Button size="md" className="rounded-lg ">
+                  <Button size="md" className="rounded-lg text-[#E8E8E8]">
                     Search
                   </Button>
 
-                  <div className="!absolute left-3 top-[13px]">
+                  <div className="!absolute left-3 top-[13px] text-[#E8E8E8]">
                     <svg
                       width="13"
                       height="14"
@@ -166,7 +166,7 @@ export default function Navbar({HandleSearch}: {
           )}
           {pathname.includes(`/${id}`) ? (
             <div
-              className="h-[fit-content] w-[100px]   py-[8px] text-center rounded-md bg-[#E50914] flex items-center justify-center cursor-pointer"
+              className="h-[fit-content] w-[100px]   py-[8px] text-center rounded-md bg-[#E50914] flex items-center justify-center cursor-pointer text-[#E8E8E8]"
               onClick={HandleBack}
             >
               <IoIosArrowBack className="text-[#fff] lg:text-[20px] text-[20px]" />
@@ -176,11 +176,11 @@ export default function Navbar({HandleSearch}: {
             <></>
           )}
         </div>
-        <div className="flex justify-evenly items-end pr-[8px]">
+        <div className="flex justify-evenly items-end pr-[8px] text-[#E8E8E8]">
           <TbMenuDeep
             htmlFor="sidebar-mobile-fixed"
             onClick={HandleToggle}
-            className="text-[2.3rem]  lg:hidden cursor-pointer "
+            className="text-[2.3rem]  lg:hidden cursor-pointer text-[#E8E8E8]"
           />
         </div>
       </div>
