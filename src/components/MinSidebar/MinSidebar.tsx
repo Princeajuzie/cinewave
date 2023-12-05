@@ -21,36 +21,6 @@ export default function MinSidebar({
 }) {
   const pathname = usePathname();
 
-
-  useEffect(() => {
-    const handleResize = () => {
-       if(typeof window !== "undefined"){
-
-         const isDesktop = window.innerWidth >= 1024; // You can adjust the threshold as needed
-         if(isDesktop){
-
-           setIstoggle(!isDesktop);
-         }else{
-          setIstoggle(toggle)
-         }
-       }
-    };
-
-    // Call the function once to set the initial state
-    handleResize();
-
-     if(typeof window !== "undefined"){
-
-       // Add a resize event listener
-       window.addEventListener("resize", handleResize);
-   
-       // Clean up the event listener on component unmount
-       return () => {
-         window.removeEventListener("resize", handleResize);
-       };
-     }
-  }, [setIstoggle]);
-
   
   const Nav_animation = {
     open: {
@@ -141,11 +111,11 @@ export default function MinSidebar({
                     <span className={`menu-title`}>Expand</span>
                   </li>
                   <Link href="/">
-                    <li
+                    <li 
                       className={`menu-item ${
                         pathname === "/" ? "menu-active" : ""
                       } li-children`}
-                    >
+                      onClick={HandleToggle}>
                       <AiTwotoneHome className="h-5 w-5 opacity-75 flex items-center justify-center" />
                       <span className={`menu-title`}>Home</span>
                     </li>
@@ -155,7 +125,7 @@ export default function MinSidebar({
                       className={`menu-item ${
                      pathname === "/trending" ? "menu-active" : ""
                       } li-children`}
-                    >
+                      onClick={HandleToggle}>
                       <BsFire className="h-5 w-5 opacity-15 flex items-center justify-center" />
                       <span className={`menu-title`}>Trending</span>
                     </li>
@@ -165,7 +135,7 @@ export default function MinSidebar({
                       className={`menu-item ${
                   pathname === "/bookmark" ? "menu-active" : ""
                       } li-children`}
-                    >
+                      onClick={HandleToggle}>
                       <BsFillBookmarksFill className="h-5 w-5 opacity-15 flex items-center justify-center" />
                       <span className={`menu-title`}>All BookMarks</span>
                     </li>
