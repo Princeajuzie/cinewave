@@ -21,11 +21,7 @@ const config: Config = withMT({
       // => @media (min-width: 640px) { ... }
     },
   },
-rippleui :{
-  removeThemes :[
-  "white", "whateverTheme"
-  ]
-},
+
   plugins: [
   require("rippleui")
   ],
