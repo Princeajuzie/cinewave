@@ -1,6 +1,6 @@
 "use client"
 import { Typography } from "@material-tailwind/react";
-
+import Link from "next/link.js";
 export default function Footer() {
   return (
     <div>
@@ -62,9 +62,13 @@ export default function Footer() {
          </ul>
        </div>
        <hr className="my-8 border-blue-gray-50" />
+       <Link href="https://bio.link/princeaj">
+
+
        <Typography    className="text-center font-normal text-[#E8E8E8]">
          &copy; 2023 Prince Ajuzie
        </Typography>
+       </Link>
      </footer>
 
 
