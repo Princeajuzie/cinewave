@@ -124,9 +124,10 @@ export default function Navbar({HandleSearch}: {
                       setSearch(e.target.value);
                       handleSubmit();
                     }}
-                    containerProps={{
-                      className: "min-w-[288px]",
-                    }}
+                    width="w-full"
+                    // containerProps={{
+                    //   className: "min-w-[288px]",
+                    // }}
                     // onKeyDown={HandleSubmit}
                     className=" !border-t-blue-gray-300 pl-9 placeholder:text-blue-gray-300 focus:!border-blue-gray-300"
                     labelProps={{

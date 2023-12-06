@@ -126,6 +126,8 @@ export default function Page() {
 
              
                 <>
+                {search === "" ?
+                
                   <div
                     className="  bg-cover w-[100%] flex flex-col items-start justify-end  min-h-[400px] object-contain rounded-3xl  bg-center"
                     style={{
@@ -151,6 +153,8 @@ export default function Page() {
                     selectedMovies2={ImageValue}/>
                     </div>
                   </div>
+                  : <></>
+                }
                 </>
             
           </div>
