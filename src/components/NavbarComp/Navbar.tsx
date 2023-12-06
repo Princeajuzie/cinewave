@@ -107,15 +107,15 @@ export default function Navbar({HandleSearch}: {
           {pathname === "/trending" ? (
             <>
               <a className="navbar-item lg:text-[20px] font-[500] sm:text-[15px] flex items-center gap-2">
-                <span className="text-[#E8E8E8]">discover Movies</span>
+                <span className="text-[#E8E8E8] hidden lg:block">discover Movies</span>
                 <BsFire className="text-[30px] text-[#E8E8E8]" />
               </a>
 
-              <a className="h-[fit-content] w-[100px] lg:px-[30px] py-[8px] text-center rounded-md bg-[#E50914] text-[#E8E8E8]">
+              <a className="h-[fit-content] w-[100px] lg:px-[30px] hidden lg:block py-[8px] text-center rounded-md bg-[#E50914] text-[#E8E8E8]">
                 Genre
               </a>
 
-              <div className="hidden items-center gap-x-2 lg:flex">
+              <div className="items-center gap-x-2 lg:flex">
                 <div className="relative flex w-full gap-2 md:w-max">
                   <Input
                     type="search"
@@ -133,7 +133,7 @@ export default function Navbar({HandleSearch}: {
                       className: "before:content-none after:content-none",
                     }}
                   />
-                  <Button size="md" className="rounded-lg text-[#E8E8E8]">
+                  <Button size="md" className="rounded-lg text-[#E8E8E8] hidden">
                     Search
                   </Button>
 

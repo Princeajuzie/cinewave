@@ -80,7 +80,7 @@ export default function MinSidebar({
         <motion.aside
           variants={Nav_animation}
           animate={toggle ? "open" : "close"}
-          className={` ${"sidebar h-full sidebar-fixed-left justify-start "} bg-[#1C1C1C] hidden sidebar-transition `}
+          className={` ${"sidebar h-full sidebar-fixed-left justify-start "} bg-[#1C1C1C] hidden lg:hidden sidebar-transition `}
           data-toggle={toggle}
         >
           <section className="sidebar-title items-center p-4">
