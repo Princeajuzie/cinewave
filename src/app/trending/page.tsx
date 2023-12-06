@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import TmdpConfig from "@/utils/TmdpConfig";
 import axios from "axios";
+import {RotatingLines }from "react-loader-spinner";
 import { UseCollapse } from "@/hooks/UseCollapse";
 import UseMovieDialog from "@/hooks/UseMovieDialog";
 
@@ -44,7 +45,7 @@ export default function Page() {
   const [searchResult, setSearchResult] = useState<Data[]>([]);
   const [recordsPerPage] = useState<number>(5);
   const { search, setSearch } = UseCollapse();
-  
+  const [LoadSearch, setLoadSearch] = useState<boolean>(true)
   const [ImageValue, setImageValue] = useState<Data | null>(null);
   const { size, setSize, handleOpen } = UseCollapse();
   const HandleFetch = async (page: number) => {
@@ -68,6 +69,7 @@ export default function Page() {
   console.log("ImageValue", ImageValue);
   const HandleSearch: any = async (searchKey: string) => {
     try {
+      setLoadSearch(searchKey? true : false);
       const response = await TmdpConfig.get(`search/movie?language=en-US`, {
         params: {
           query: searchKey,
@@ -76,13 +78,20 @@ export default function Page() {
 
       console.log("searching");
       const Valueget = response.data.results;
+     
       setSearchResult(Valueget);
       setLoading2(false);
     } catch (error) {
       console.log(error);
+    }finally {
+      setLoadSearch(false); // Set to false once the API request is complete
+      setLoading2(false);
     }
   };
 
+  useEffect(()=>{
+    HandleSearch
+  },[search])
   useEffect(() => {
     HandleFetch(currentPage);
   }, [currentPage]);
@@ -124,11 +133,10 @@ export default function Page() {
         <div className="pt-[5rem]  lg:pr-[30px] flex flex-col gap-[20px] justify-center">
           <div>
 
-             
                 <>
                 {search === "" ?
                 
-                  <div
+                  <div 
                     className="  bg-cover w-[100%] flex flex-col items-start justify-end  min-h-[400px] object-contain rounded-3xl  bg-center"
                     style={{
                       backgroundImage: ImageValue
@@ -153,7 +161,19 @@ export default function Page() {
                     selectedMovies2={ImageValue}/>
                     </div>
                   </div>
-                  : <></>
+                  : <>
+                  
+              {LoadSearch ? 
+              <>
+             <div className="flex items-center justify-center m-auto h-[100vh]">
+             <RotatingLines
+  strokeColor="grey"
+  strokeWidth="5"
+  animationDuration="0.75"
+  width="96"
+  visible={true}
+/></div></> : <></>}
+                  </>
                 }
                 </>
             

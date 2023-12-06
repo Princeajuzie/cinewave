@@ -122,7 +122,10 @@ export default function Navbar({HandleSearch}: {
                     placeholder="Search"
                     onChange={(e) => {
                       setSearch(e.target.value);
-                      handleSubmit();
+                  
+                    }}
+                    onKeyDown={   ()=>{
+                      handleSubmit()
                     }}
                     width="w-full"
                     // containerProps={{
