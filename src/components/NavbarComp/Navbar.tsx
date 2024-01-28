@@ -77,7 +77,7 @@ export default function Navbar({HandleSearch}: {
           {pathname === "/" ? (
             <>
               <a className="navbar-item lg:text-[20px] w-auto font-[500] sm:text-[15px] flex items-center gap-2 ">
-                <span className="line-clamp-2 text-[#E8E8E8]">Popular Movies</span>
+                <span className="line-clamp-2 text-[#E8E8E8]">Popular Movies 🔥</span>
                 <PiMonitorFill className="text-[30px] text-[#E8E8E8]" />
               </a>
 
